@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#8eb7d3" />
+    <title>ZOE · Personal Website</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app" aria-live="polite">
+      <section class="design-page is-active" data-page="about" aria-label="About Me">
+        <div class="canvas about-canvas">
+          <img class="design-image" src="https://github.com/yinyesun/yinyesun.github.io/releases/download/personal-site-assets-v1/about-animated.svg" alt="ZOE 个人网站 About Me 页面" />
+
+          <nav class="image-nav image-nav--about" aria-label="主导航">
+            <button data-go="about" aria-label="About Me"></button>
+            <button data-go="projects" aria-label="Projects"></button>
+            <button data-go="videos" aria-label="Video Works"></button>
+          </nav>
+
+          <a class="resume-link" href="https://yinyesun.github.io/" target="_blank" rel="noopener noreferrer" aria-label="打开作品集网站"></a>
+
+          <div class="about-project-links" aria-label="精选项目">
+            <button data-project="0" aria-label="打开 KlingQ 项目"></button>
+            <button data-project="1" aria-label="打开 KroWork 项目一"></button>
+            <button data-project="2" aria-label="打开 KroWork 项目二"></button>
+            <button data-project="4" aria-label="打开人生圆舞曲项目"></button>
+            <button data-go="projects" aria-label="查看全部项目"></button>
+          </div>
+
+          <section class="honors-ui" aria-label="个人荣誉">
+            <div class="honors-tabs" role="tablist" aria-label="荣誉分类">
+              <button class="is-selected" role="tab" aria-selected="true" data-honor-tab="competition">竞赛奖项</button>
+              <button role="tab" aria-selected="false" data-honor-tab="school">学校荣誉</button>
+              <button role="tab" aria-selected="false" data-honor-tab="student">学生工作</button>
+            </div>
+            <div class="honors-carousel">
+              <button class="honor-arrow honor-prev" aria-label="上一条荣誉">‹</button>
+              <div class="honor-track" aria-live="off"></div>
+              <button class="honor-arrow honor-next" aria-label="下一条荣誉">›</button>
+            </div>
+          </section>
+          <button class="back-to-top" type="button" aria-label="回到顶部"></button>
+        </div>
+      </section>
+
+      <section class="design-page" data-page="projects" aria-label="Projects">
+        <div class="canvas projects-canvas">
+          <img class="design-image" src="assets/figma/projects.png" alt="Projects 项目列表页面" />
+          <div class="project-art-window" aria-hidden="true">
+            <img id="project-art" src="assets/figma/project-01-klingq.png" alt="" />
+          </div>
+          <nav class="image-nav image-nav--projects" aria-label="主导航">
+            <button data-go="about" aria-label="About Me"></button>
+            <button data-go="projects" aria-label="Projects"></button>
+            <button data-go="videos" aria-label="Video Works"></button>
+          </nav>
+          <button class="project-arrow project-prev" aria-label="上一个项目">‹</button>
+          <button class="project-arrow project-next" aria-label="下一个项目">›</button>
+          <div class="project-card-switcher" aria-label="选择项目">
+            <button data-project-select="0" aria-label="切换到 KlingQ"></button>
+            <button data-project-select="1" aria-label="切换到 KroWork Design System"></button>
+            <button data-project-select="2" aria-label="切换到 KroWork 超能套件"></button>
+            <button data-project-select="3" aria-label="切换到 KroWork 商业体验"></button>
+            <button data-project-select="4" aria-label="切换到人生圆舞曲"></button>
+            <button data-project-select="5" aria-label="切换到魔表与图文模板供给"></button>
+            <button data-project-select="6" aria-label="切换到员工卡首页优化"></button>
+            <button data-project-select="7" aria-label="切换到内推年报"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="design-page" data-page="videos" aria-label="Video Works">
+        <div class="canvas videos-canvas">
+          <img class="design-image" src="assets/figma/video-works.png" alt="Video Works 视频作品页面" />
+          <nav class="image-nav image-nav--videos" aria-label="主导航">
+            <button data-go="about" aria-label="About Me"></button>
+            <button data-go="projects" aria-label="Projects"></button>
+            <button data-go="videos" aria-label="Video Works"></button>
+          </nav>
+          <button class="video-open video-open--life" data-video="life" aria-label="播放人生圆舞曲"></button>
+          <button class="video-open video-open--trip" data-video="trip" aria-label="播放携程程里内推"></button>
+          <button class="video-open video-open--magic" data-video="magic" aria-label="播放魔表特效设计"></button>
+          <button class="video-open video-open--car" data-video="car" aria-label="播放古车博物馆"></button>
+        </div>
+      </section>
+
+      <section class="design-page detail-page" data-page="detail" aria-label="项目详情">
+        <div class="canvas detail-canvas">
+          <img id="detail-image" class="design-image" src="assets/figma/project-01-klingq.png" alt="项目详情页面" />
+          <nav class="image-nav image-nav--projects" aria-label="主导航">
+            <button data-go="about" aria-label="About Me"></button>
+            <button data-go="projects" aria-label="Projects"></button>
+            <button data-go="videos" aria-label="Video Works"></button>
+          </nav>
+        </div>
+        <button class="floating-control detail-back" aria-label="返回项目列表">← 返回项目</button>
+        <button class="floating-control detail-prev" aria-label="上一个项目">‹</button>
+        <button class="floating-control detail-next" aria-label="下一个项目">›</button>
+      </section>
+    </main>
+
+    <dialog class="video-dialog" aria-labelledby="video-title">
+      <div class="video-dialog__panel">
+        <button class="video-close" aria-label="关闭视频"><span aria-hidden="true">×</span></button>
+        <h2 id="video-title"></h2>
+        <video id="video-player" controls playsinline preload="metadata"></video>
+      </div>
+    </dialog>
+
+    <div class="moonshot-cursor" aria-hidden="true"></div>
+    <div class="moonshot-cursor-dot" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
