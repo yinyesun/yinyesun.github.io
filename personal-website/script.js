@@ -20,7 +20,7 @@ const videos = {
   life: { title: 'Life Waltz · 人生圆舞曲', src: 'assets/videos/life-waltz.mp4' },
   trip: { title: 'Annual Report · 携程程里内推', src: 'assets/videos/trip-insider.mp4' },
   magic: { title: 'Magic Watch Special Effects Design · 魔表特效设计', src: 'assets/videos/magic-watch.mp4' },
-  car: { title: '古车博物馆', src: 'https://github.com/yinyesun/yinyesun.github.io/releases/download/personal-site-assets-v1/vintage-car.mp4' },
+  car: { title: '古车博物馆', src: 'assets/videos/vintage-car.mp4' },
 };
 
 const honors = {
