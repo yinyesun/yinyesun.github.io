@@ -1,7 +1,7 @@
 const screens = {
   search: {
     title: "01 浏览甜品内容",
-    image: "01-search.jpg",
+    image: "01-search.webp",
     hotspots: [
       { label: "查看甜品笔记", to: "post", x: 0, y: 43, w: 50, h: 40 },
       { label: "查看点点整理", to: "summary", x: 1, y: 14, w: 98, h: 25 },
@@ -9,7 +9,7 @@ const screens = {
   },
   post: {
     title: "02 阅读真实笔记",
-    image: "02-post.jpg",
+    image: "02-post.webp",
     hotspots: [
       { label: "收藏并进入经验池", to: "pool", x: 62, y: 89, w: 16, h: 10 },
       { label: "返回搜索结果", to: "search", x: 0, y: 5, w: 13, h: 10 },
@@ -17,7 +17,7 @@ const screens = {
   },
   pool: {
     title: "03 浏览主题经验池",
-    image: "09-pool.jpg",
+    image: "09-pool.png",
     hotspots: [
       { label: "进入点点总结", to: "summary", x: 1, y: 17, w: 98, h: 58 },
       { label: "打开经验池设置", to: "settings", x: 1, y: 4, w: 13, h: 8 },
@@ -35,7 +35,7 @@ const screens = {
   },
   sources: {
     title: "05 追溯真人经验",
-    image: "08-sources.jpg",
+    image: "08-sources.png",
     hotspots: [
       { label: "继续提问", to: "fallback", x: 2, y: 87, w: 96, h: 11 },
       { label: "返回点点总结", to: "summary", x: 0, y: 5, w: 13, h: 9 },
@@ -102,7 +102,7 @@ let timer;
 function render(id) {
   const screen = screens[id] || screens.search;
   current = screens[id] ? id : "search";
-  image.src = `./assets/${screen.image}`;
+  image.src = `./assets/${screen.image}?v=20260920`;
   image.alt = screen.title;
   hotspotLayer.replaceChildren();
   screen.hotspots.forEach((spot) => {
