@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1b1a1f" />
+    <title>小红书 · AI × 社区交互 Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="phone" aria-label="小红书手机端交互原型">
+        <img id="screen-image" class="screen-image" alt="" draggable="false" />
+        <div id="hotspots" class="hotspots"></div>
+        <div id="tap-feedback" class="tap-feedback" aria-hidden="true"></div>
+      </section>
+      <aside class="review" aria-label="演示导航">
+        <p class="review-kicker">可运行原型 · 本地检查版</p>
+        <h1>小红书<br />AI × 社区</h1>
+        <p class="review-description">点击手机画面中的对应控件，体验从社区内容到真人经验回流的完整路径。</p>
+        <ol id="steps" class="steps"></ol>
+        <button id="restart" class="restart" type="button">从头体验</button>
+        <p class="review-note">以 Figma 原始导出及你录制的交互 Demo 为参考。界面中的示例数据不连接真实小红书服务。</p>
+      </aside>
+    </main>
+    <script defer src="./main.js"></script>
+  </body>
+</html>
