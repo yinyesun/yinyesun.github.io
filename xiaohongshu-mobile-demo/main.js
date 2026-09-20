@@ -11,12 +11,20 @@ const screens = {
     title: "02 阅读真实笔记",
     image: "02-post.webp",
     hotspots: [
-      { label: "收藏并进入经验池", to: "pool", x: 62, y: 89, w: 16, h: 10 },
+      { label: "收藏并查看加入邀请", to: "invite", x: 62, y: 89, w: 16, h: 10 },
       { label: "返回搜索结果", to: "search", x: 0, y: 5, w: 13, h: 10 },
     ],
   },
+  invite: {
+    title: "03 邀请加入经验池",
+    image: "03-invite.webp",
+    hotspots: [
+      { label: "取消加入经验池", to: "post", x: 19, y: 52, w: 31, h: 7 },
+      { label: "加入经验池", to: "pool", x: 50, y: 52, w: 31, h: 7 },
+    ],
+  },
   pool: {
-    title: "03 浏览主题经验池",
+    title: "04 浏览主题经验池",
     image: "09-pool.png",
     hotspots: [
       { label: "进入点点总结", to: "summary", x: 1, y: 17, w: 98, h: 58 },
@@ -25,7 +33,7 @@ const screens = {
     ],
   },
   summary: {
-    title: "04 点点整理社区经验",
+    title: "05 点点整理社区经验",
     image: "03-summary.png",
     hotspots: [
       { label: "查看真实经验来源", to: "sources", x: 10, y: 77, w: 80, h: 9 },
@@ -34,7 +42,7 @@ const screens = {
     ],
   },
   sources: {
-    title: "05 追溯真人经验",
+    title: "06 追溯真人经验",
     image: "08-sources.png",
     hotspots: [
       { label: "继续提问", to: "fallback", x: 2, y: 87, w: 96, h: 11 },
@@ -42,7 +50,7 @@ const screens = {
     ],
   },
   fallback: {
-    title: "06 信息不足，问真人",
+    title: "07 信息不足，问真人",
     image: "04-fallback.png",
     hotspots: [
       { label: "问一问真实社区", to: "publish", x: 65, y: 23, w: 24, h: 11 },
@@ -50,7 +58,7 @@ const screens = {
     ],
   },
   publish: {
-    title: "07 确认并发布问题",
+    title: "08 确认并发布问题",
     image: "05-publish.png",
     hotspots: [
       { label: "确认发布到经验池", to: "community", x: 50, y: 55, w: 32, h: 9 },
@@ -58,7 +66,7 @@ const screens = {
     ],
   },
   community: {
-    title: "08 社区用户回答",
+    title: "09 社区用户回答",
     image: "06-community.png",
     hotspots: [
       { label: "查看点点更新结果", to: "update", x: 5, y: 68, w: 92, h: 20 },
@@ -67,7 +75,7 @@ const screens = {
     ],
   },
   update: {
-    title: "09 新经验回流总结",
+    title: "10 新经验回流总结",
     image: "07-update.png",
     hotspots: [
       { label: "返回社区聊天", to: "community", x: 0, y: 5, w: 13, h: 10 },
@@ -75,7 +83,7 @@ const screens = {
     ],
   },
   settings: {
-    title: "10 经验池设置",
+    title: "11 经验池设置",
     image: "10-questions.png",
     hotspots: [
       { label: "查看我的问题与回答", to: "questions", x: 2, y: 27, w: 96, h: 9 },
@@ -83,7 +91,7 @@ const screens = {
     ],
   },
   questions: {
-    title: "11 我的问题与回答",
+    title: "12 我的问题与回答",
     image: "11-settings.png",
     hotspots: [
       { label: "返回经验池设置", to: "settings", x: 0, y: 5, w: 13, h: 10 },
@@ -102,7 +110,7 @@ let timer;
 function render(id) {
   const screen = screens[id] || screens.search;
   current = screens[id] ? id : "search";
-  image.src = `./assets/${screen.image}?v=20260920`;
+  image.src = `./assets/${screen.image}?v=20260920-invite`;
   image.alt = screen.title;
   hotspotLayer.replaceChildren();
   screen.hotspots.forEach((spot) => {
