@@ -13,7 +13,7 @@ button { font: inherit; }
 .screen-image { display: block; width: 100%; height: 100%; object-fit: fill; user-select: none; transition: opacity .18s ease, transform .18s ease; }
 .screen-image.leaving { opacity: .45; transform: scale(.985); }
 .saved-star:not([hidden]) { position: absolute; left: 65%; top: 91.4%; width: 17.5%; height: 5.2%; display: flex; align-items: center; justify-content: center; gap: 3%; background: #1d1c21; color: #d0a356; font-size: clamp(16px, 2.4dvh, 23px); pointer-events: none; }
-.saved-star svg { width: 46%; height: 80%; fill: currentColor; }
+.saved-star svg { width: 38%; height: 80%; fill: currentColor; }
 .hotspots { position: absolute; inset: 0; }
 .hotspot { position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .hotspot:focus-visible { outline: 2px solid #9df4e8; outline-offset: -2px; border-radius: 12px; background: #9df4e822; }
