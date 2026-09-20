@@ -11,7 +11,7 @@ const screens = {
     title: "02 阅读真实笔记",
     image: "02-post.webp",
     hotspots: [
-      { label: "收藏并查看加入邀请", to: "invite", x: 62, y: 89, w: 16, h: 10 },
+      { label: "收藏笔记", to: "invite", collect: true, x: 62, y: 89, w: 16, h: 10 },
       { label: "返回搜索结果", to: "search", x: 0, y: 5, w: 13, h: 10 },
     ],
   },
@@ -122,22 +122,26 @@ const image = document.querySelector("#screen-image");
 const hotspotLayer = document.querySelector("#hotspots");
 const feedback = document.querySelector("#tap-feedback");
 const actionMessage = document.querySelector("#action-message");
+const savedStar = document.querySelector("#saved-star");
 const steps = document.querySelector("#steps");
 let current = "search";
 let timer;
+let inviteTimer;
+let collected = false;
 
 function render(id) {
   const screen = screens[id] || screens.search;
   current = screens[id] ? id : "search";
-  image.src = `./assets/${screen.image}?v=20260920-remove`;
+  image.src = `./assets/${screen.image}?v=20260920-collect`;
   image.alt = screen.title;
+  savedStar.hidden = current !== "post" || !collected;
   actionMessage.textContent = "";
   hotspotLayer.replaceChildren();
   screen.hotspots.forEach((spot) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "hotspot";
-    button.setAttribute("aria-label", spot.label);
+    button.setAttribute("aria-label", spot.collect && collected ? "已收藏，查看加入邀请" : spot.label);
     button.dataset.to = spot.to;
     Object.assign(button.style, {
       left: `${spot.x}%`, top: `${spot.y}%`, width: `${spot.w}%`, height: `${spot.h}%`,
@@ -149,6 +153,14 @@ function render(id) {
       feedback.classList.remove("active");
       void feedback.offsetWidth;
       feedback.classList.add("active");
+      if (spot.collect) {
+        collected = true;
+        savedStar.hidden = false;
+        button.setAttribute("aria-label", "已收藏，正在打开加入邀请");
+        clearTimeout(inviteTimer);
+        inviteTimer = setTimeout(() => navigate(spot.to), 900);
+        return;
+      }
       navigate(spot.to, false, spot.message);
     });
     hotspotLayer.append(button);
@@ -162,6 +174,7 @@ function render(id) {
 function navigate(id, replace = false, message = "") {
   if (!screens[id]) return;
   clearTimeout(timer);
+  clearTimeout(inviteTimer);
   image.classList.add("leaving");
   timer = setTimeout(() => {
     if (replace) history.replaceState({ screen: id }, "", `#${id}`);
