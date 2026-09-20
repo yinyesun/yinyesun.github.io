@@ -17,6 +17,7 @@ button { font: inherit; }
 .hotspot:focus-visible { outline: 2px solid #9df4e8; outline-offset: -2px; border-radius: 12px; background: #9df4e822; }
 .tap-feedback { position: absolute; width: 34px; height: 34px; border: 2px solid #fff; border-radius: 50%; opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.5); box-shadow: 0 0 0 5px #ff244255; }
 .tap-feedback.active { animation: tap .4s ease-out; }
+.action-message:not(:empty) { position: absolute; left: 8%; right: 8%; bottom: 10%; padding: 10px 12px; border-radius: 10px; background: #242329eb; color: #fff; text-align: center; font-size: 12px; pointer-events: none; }
 @keyframes tap { 0% { opacity: .95; transform: translate(-50%, -50%) scale(.4); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.7); } }
 .review { width: min(360px, 30vw); }
 .review-kicker { color: #ff667d; font-size: 12px; font-weight: 700; letter-spacing: .12em; }

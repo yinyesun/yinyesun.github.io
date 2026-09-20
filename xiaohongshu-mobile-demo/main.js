@@ -28,8 +28,17 @@ const screens = {
     image: "09-pool.png",
     hotspots: [
       { label: "进入点点总结", to: "summary", x: 1, y: 17, w: 98, h: 58 },
+      { label: "移除经验池中的项目", to: "removeItemConfirm", x: 80, y: 22, w: 19, h: 10 },
       { label: "打开经验池设置", to: "settings", x: 1, y: 4, w: 13, h: 8 },
       { label: "查看社区聊天", to: "community", x: 72, y: 90, w: 15, h: 10 },
+    ],
+  },
+  removeItemConfirm: {
+    title: "移除项目 · 危险确认",
+    image: "18-remove-item-confirm.png",
+    hotspots: [
+      { label: "确认移除项目", to: "pool", x: 19, y: 52, w: 31, h: 7, message: "仅演示确认，未删除真实内容" },
+      { label: "保留项目", to: "pool", x: 50, y: 52, w: 31, h: 7 },
     ],
   },
   summary: {
@@ -87,7 +96,16 @@ const screens = {
     image: "10-questions.png",
     hotspots: [
       { label: "查看我的问题与回答", to: "questions", x: 2, y: 27, w: 96, h: 9 },
+      { label: "移除经验池", to: "removePoolConfirm", x: 4, y: 61, w: 92, h: 10 },
       { label: "返回经验池", to: "pool", x: 0, y: 5, w: 13, h: 10 },
+    ],
+  },
+  removePoolConfirm: {
+    title: "移除经验池 · 危险确认",
+    image: "22-remove-pool-confirm.png",
+    hotspots: [
+      { label: "确认移除经验池", to: "pool", x: 19, y: 52, w: 31, h: 7, message: "仅演示确认，未删除真实内容" },
+      { label: "保留经验池", to: "settings", x: 50, y: 52, w: 31, h: 7 },
     ],
   },
   questions: {
@@ -103,6 +121,7 @@ const screens = {
 const image = document.querySelector("#screen-image");
 const hotspotLayer = document.querySelector("#hotspots");
 const feedback = document.querySelector("#tap-feedback");
+const actionMessage = document.querySelector("#action-message");
 const steps = document.querySelector("#steps");
 let current = "search";
 let timer;
@@ -110,8 +129,9 @@ let timer;
 function render(id) {
   const screen = screens[id] || screens.search;
   current = screens[id] ? id : "search";
-  image.src = `./assets/${screen.image}?v=20260920-invite`;
+  image.src = `./assets/${screen.image}?v=20260920-remove`;
   image.alt = screen.title;
+  actionMessage.textContent = "";
   hotspotLayer.replaceChildren();
   screen.hotspots.forEach((spot) => {
     const button = document.createElement("button");
@@ -129,7 +149,7 @@ function render(id) {
       feedback.classList.remove("active");
       void feedback.offsetWidth;
       feedback.classList.add("active");
-      navigate(spot.to);
+      navigate(spot.to, false, spot.message);
     });
     hotspotLayer.append(button);
   });
@@ -139,7 +159,7 @@ function render(id) {
   });
 }
 
-function navigate(id, replace = false) {
+function navigate(id, replace = false, message = "") {
   if (!screens[id]) return;
   clearTimeout(timer);
   image.classList.add("leaving");
@@ -147,6 +167,7 @@ function navigate(id, replace = false) {
     if (replace) history.replaceState({ screen: id }, "", `#${id}`);
     else history.pushState({ screen: id }, "", `#${id}`);
     render(id);
+    actionMessage.textContent = message;
     requestAnimationFrame(() => image.classList.remove("leaving"));
   }, 130);
 }
